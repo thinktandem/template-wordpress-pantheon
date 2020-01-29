@@ -1,0 +1,9 @@
+{% if menu %}
+  <div class="dropdown-menu">
+    {% for item in menu %}
+      <a class="{{item.classes | merge(['dropdown-item']) | join(' ')}}" href="{{item.get_link}}">
+        {{item.title}}
+      </a>
+    {% endfor %}
+  </div>
+{% endif %}

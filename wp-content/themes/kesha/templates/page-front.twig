@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <article id="front-page">
+    <section class="row">
+      <div class="col">
+        <h1 class="article-h1">{{post.title}}</h1>
+        <div class="article-body">
+          {{post.content}}
+        </div>
+      </div>
+    </section>
+  </article>
+{% endblock %}

@@ -1,0 +1,42 @@
+{
+  "name": "timber-starter-theme",
+  "version": "0.0.1",
+  "description": "Timber Starter Theme Sassy SaSS",
+  "authors": [
+    "John Ouellet <john@thinktandem.io>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "grunt": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-uglify": "4.0.0",
+    "grunt-contrib-watch": "latest",
+    "grunt-postcss": "latest",
+    "grunt-sass": "2.0.0"
+  },
+  "browserslist": [
+    "last 1 major version",
+    ">= 1%",
+    "Chrome >= 45",
+    "Firefox >= 38",
+    "Edge >= 12",
+    "Explorer >= 10",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.2.1",
+    "load-grunt-tasks": "4.0.0",
+    "popper.js": "^1.12.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "rm -rf assets/style/bootstrap/ && rm -rf assets/js/bootstrap.js && rm -rf assets/js/popper.js",
+    "postinstall": "cp -r node_modules/bootstrap/scss/. assets/style/bootstrap/ && cp -r node_modules/bootstrap/dist/js/bootstrap.js assets/js/ && cp -r node_modules/popper.js/dist/umd/popper.js assets/js/"
+  }
+}

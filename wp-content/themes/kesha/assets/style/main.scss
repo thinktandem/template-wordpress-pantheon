@@ -1,0 +1,17 @@
+/**
+ * Main file that pulls in everything from your project.
+ * except specifics in components.
+ */
+
+// Base:
+@import "global/base";
+@import "global/mixins";
+@import "global/typography";
+@import "global/extendables";
+@import "global/global";
+@import "bootstrap/bootstrap.scss";
+
+// @import "atoms/";
+// @import "molecules/";
+// @import "organisms/";
+// @import "templates/";

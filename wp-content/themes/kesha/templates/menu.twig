@@ -1,0 +1,33 @@
+{% if menu %}
+
+  <ul class="navbar-nav mr-auto">
+
+    {% for item in menu %}
+
+      {% if item.get_children is not empty %}
+        {% set submenu = true %}
+      {% else %}
+        {% set submenu = false %}
+      {% endif %}
+
+      {% if submenu %}
+        <li class="{{item.classes | merge(['nav-item', 'dropdown']) | join(' ')}}">
+          <a href="{{item.get_link}}" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{item.title}}
+          </a>
+          {% include "dropdown-menu.twig" with {'menu': item.get_children} %}
+        </li>
+
+      {% else %}
+        <li class="{{item.classes | merge(['nav-item']) | join(' ')}}">
+          <a href="{{item.get_link}}"class="nav-link">
+            {{item.title}}
+          </a>
+        </li>
+      {% endif %}
+
+    {% endfor %}
+
+  </ul>
+
+{% endif %}
