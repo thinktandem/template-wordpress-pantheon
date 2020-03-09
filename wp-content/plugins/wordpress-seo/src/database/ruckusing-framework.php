@@ -5,14 +5,14 @@
  * @package Yoast\YoastSEO\Config
  */
 
-namespace Yoast\WP\Free\Database;
+namespace Yoast\WP\SEO\Database;
 
 use wpdb;
-use Yoast\WP\Free\Config\Dependency_Management;
-use Yoast\WP\Free\Loggers\Migration_Logger;
-use YoastSEO_Vendor\Ruckusing_FrameworkRunner;
-use YoastSEO_Vendor\Ruckusing_Task_Manager;
-use YoastSEO_Vendor\Task_Db_Migrate;
+use Yoast\WP\SEO\Config\Dependency_Management;
+use Yoast\WP\SEO\Loggers\Migration_Logger;
+use Ruckusing_FrameworkRunner;
+use Ruckusing_Task_Manager;
+use Task_Db_Migrate;
 
 /**
  * Class Ruckusing_Framework
@@ -29,24 +29,24 @@ class Ruckusing_Framework {
 	/**
 	 * The dependency management checker.
 	 *
-	 * @var \Yoast\WP\Free\Config\Dependency_Management
+	 * @var \Yoast\WP\SEO\Config\Dependency_Management
 	 */
 	protected $dependency_management;
 
 	/**
 	 * The migration logger object.
 	 *
-	 * @var \Yoast\WP\Free\Loggers\Migration_Logger
+	 * @var \Yoast\WP\SEO\Loggers\Migration_Logger
 	 */
 	protected $migration_logger;
 
 	/**
 	 * Ruckusing_Framework constructor.
 	 *
-	 * @param \wpdb                                       $wpdb                  The wpdb instance.
-	 * @param \Yoast\WP\Free\Config\Dependency_Management $dependency_management The dependency management checker.
-	 * @param \Yoast\WP\Free\Loggers\Migration_Logger     $migration_logger      The migration logger, extends the
-	 *                                                                           Ruckusing logger.
+	 * @param \wpdb                                      $wpdb                  The wpdb instance.
+	 * @param \Yoast\WP\SEO\Config\Dependency_Management $dependency_management The dependency management checker.
+	 * @param \Yoast\WP\SEO\Loggers\Migration_Logger     $migration_logger      The migration logger, extends the
+	 *                                                                          Ruckusing logger.
 	 */
 	public function __construct( wpdb $wpdb, Dependency_Management $dependency_management, Migration_Logger $migration_logger ) {
 		$this->wpdb                  = $wpdb;
@@ -55,14 +55,14 @@ class Ruckusing_Framework {
 	}
 
 	/**
-	 * Gets the ruckusing framework runner.
-	 *
-	 * @param string $migrations_table_name The migrations table name.
-	 * @param string $migrations_directory  The migrations directory.
-	 *
-	 * @return \YoastSEO_Vendor\Ruckusing_FrameworkRunner The framework runner.
-	 */
-	public function get_framework_runner( $migrations_table_name, $migrations_directory ) {
+  * Gets the ruckusing framework runner.
+  *
+  * @param string $migrations_table_name The migrations table name.
+  * @param string $migrations_directory  The migrations directory.
+  *
+  * @return \Ruckusing_FrameworkRunner The framework runner.
+  */
+ public function get_framework_runner( $migrations_table_name, $migrations_directory ) {
 		$this->maybe_set_constant();
 
 		$configuration = $this->get_configuration( $migrations_table_name, $migrations_directory );
@@ -79,16 +79,16 @@ class Ruckusing_Framework {
 	}
 
 	/**
-	 * Gets the ruckusing framework task manager.
-	 *
-	 * @param \YoastSEO_Vendor\Ruckusing_Adapter_MySQL_Base $adapter               The MySQL adapter.
-	 * @param string                                        $migrations_table_name The migrations table name.
-	 * @param string                                        $migrations_directory  The migrations directory.
-	 *
-	 * @return \YoastSEO_Vendor\Ruckusing_Task_Manager The task manager.
-	 * @throws \YoastSEO_Vendor\Ruckusing_Exception If any of the arguments are invalid.
-	 */
-	public function get_framework_task_manager( $adapter, $migrations_table_name, $migrations_directory ) {
+  * Gets the ruckusing framework task manager.
+  *
+  * @param \Ruckusing_Adapter_MySQL_Base $adapter               The MySQL adapter.
+  * @param string                                        $migrations_table_name The migrations table name.
+  * @param string                                        $migrations_directory  The migrations directory.
+  *
+  * @return \Ruckusing_Task_Manager The task manager.
+  * @throws \Ruckusing_Exception If any of the arguments are invalid.
+  */
+ public function get_framework_task_manager( $adapter, $migrations_table_name, $migrations_directory ) {
 		$task_manager = new Ruckusing_Task_Manager( $adapter, $this->get_configuration( $migrations_table_name, $migrations_directory ) );
 		$task_manager->register_task( 'db:migrate', new Task_Db_Migrate( $adapter ) );
 

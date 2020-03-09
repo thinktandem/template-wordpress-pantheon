@@ -2,12 +2,12 @@
 /**
  * Yoast SEO Plugin File.
  *
- * @package Yoast\WP\Free
+ * @package Yoast\WP\SEO
  */
 
-namespace Yoast\WP\Free;
+namespace Yoast\WP\SEO;
 
-use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class that manages loading integrations if and only if all their conditionals are met.
@@ -17,30 +17,30 @@ class Loader {
 	/**
 	 * The registered integrations.
 	 *
-	 * @var \Yoast\WP\Free\WordPress\Integration[]
+	 * @var \Yoast\WP\SEO\WordPress\Integration[]
 	 */
 	protected $integrations = [];
 
 	/**
 	 * The registered initializer.
 	 *
-	 * @var \Yoast\WP\Free\WordPress\Initializer[]
+	 * @var \Yoast\WP\SEO\WordPress\Initializer[]
 	 */
 	protected $initializers = [];
 
 	/**
-	 * The dependency injection container.
-	 *
-	 * @var \YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface
-	 */
-	protected $container;
+  * The dependency injection container.
+  *
+  * @var \Symfony\Component\DependencyInjection\ContainerInterface
+  */
+ protected $container;
 
 	/**
-	 * Loader constructor.
-	 *
-	 * @param \YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface $container The dependency injection container.
-	 */
-	public function __construct( ContainerInterface $container ) {
+  * Loader constructor.
+  *
+  * @param \Symfony\Component\DependencyInjection\ContainerInterface $container The dependency injection container.
+  */
+ public function __construct( ContainerInterface $container ) {
 		$this->container = $container;
 	}
 
@@ -109,7 +109,7 @@ class Loader {
 	/**
 	 * Checks if all conditionals of a given integration are met.
 	 *
-	 * @param \Yoast\WP\Free\WordPress\Integration $class The class name of the integration.
+	 * @param \Yoast\WP\SEO\WordPress\Loadable $class The class name of the integration.
 	 *
 	 * @return bool Whether or not all conditionals of the integration are met.
 	 */

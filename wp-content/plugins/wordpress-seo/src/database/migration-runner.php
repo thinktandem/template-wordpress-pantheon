@@ -5,26 +5,17 @@
  * @package Yoast\YoastSEO\Config
  */
 
-namespace Yoast\WP\Free\Database;
+namespace Yoast\WP\SEO\Database;
 
-use Yoast\WP\Free\Conditionals\Indexables_Feature_Flag_Conditional;
-use Yoast\WP\Free\Loggers\Logger;
-use Yoast\WP\Free\ORM\Yoast_Model;
-use Yoast\WP\Free\WordPress\Initializer;
+use Yoast\WP\SEO\Conditionals\Indexables_Feature_Flag_Conditional;
+use Yoast\WP\SEO\Loggers\Logger;
+use Yoast\WP\SEO\ORM\Yoast_Model;
+use Yoast\WP\SEO\WordPress\Initializer;
 
 /**
  * Triggers database migrations and handles results.
  */
 class Migration_Runner implements Initializer {
-
-	/**
-	 * Retrieves the conditionals for the migrations.
-	 *
-	 * @return array The conditionals.
-	 */
-	public static function get_conditionals() {
-		return [ Indexables_Feature_Flag_Conditional::class ];
-	}
 
 	/**
 	 * The value for a migration success state.
@@ -50,22 +41,31 @@ class Migration_Runner implements Initializer {
 	/**
 	 * The Ruckusing framework runner.
 	 *
-	 * @var \Yoast\WP\Free\Database\Ruckusing_Framework
+	 * @var \Yoast\WP\SEO\Database\Ruckusing_Framework
 	 */
 	protected $framework;
 
 	/**
 	 * The logger object.
 	 *
-	 * @var \Yoast\WP\Free\Loggers\Logger
+	 * @var \Yoast\WP\SEO\Loggers\Logger
 	 */
 	protected $logger;
 
 	/**
+	 * Retrieves the conditionals for the migrations.
+	 *
+	 * @return array The conditionals.
+	 */
+	public static function get_conditionals() {
+		return [ Indexables_Feature_Flag_Conditional::class ];
+	}
+
+	/**
 	 * Migrations constructor.
 	 *
-	 * @param \Yoast\WP\Free\Database\Ruckusing_Framework $framework The Ruckusing framework runner.
-	 * @param \Yoast\WP\Free\Loggers\Logger               $logger    A PSR compatible logger.
+	 * @param \Yoast\WP\SEO\Database\Ruckusing_Framework $framework The Ruckusing framework runner.
+	 * @param \Yoast\WP\SEO\Loggers\Logger               $logger    A PSR compatible logger.
 	 */
 	public function __construct( Ruckusing_Framework $framework, Logger $logger ) {
 		$this->framework = $framework;
@@ -97,11 +97,11 @@ class Migration_Runner implements Initializer {
 		try {
 			$framework_runner = $this->framework->get_framework_runner( $migrations_table_name, $migrations_directory );
 			/**
-			 * This variable represents Ruckusing_Adapter_MySQL_Base adapter.
-			 *
-			 * @var \YoastSEO_Vendor\Ruckusing_Adapter_MySQL_Base $adapter
-			 */
-			$adapter = $framework_runner->get_adapter();
+    * This variable represents Ruckusing_Adapter_MySQL_Base adapter.
+    *
+    * @var \Ruckusing_Adapter_MySQL_Base $adapter
+    */
+   $adapter = $framework_runner->get_adapter();
 
 			// Create our own migrations table with a 191 string limit to support older versions of MySQL.
 			// Run this before calling the framework runner so it doesn't create it's own.
