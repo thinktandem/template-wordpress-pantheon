@@ -15,9 +15,9 @@
  * keep your config separate, we recommend using a 'wp-config-local.php' file,
  * which you should also make sure you .gitignore.
  */
-if (file_exists(dirname(__FILE__) . '/wp-config-local.php') && !isset($_ENV['PANTHEON_ENVIRONMENT'])):
+if (file_exists(__DIR__ . '/wp-config-local.php') && !isset($_ENV['PANTHEON_ENVIRONMENT'])):
   # IMPORTANT: ensure your local config does not include wp-settings.php
-  require_once(dirname(__FILE__) . '/wp-config-local.php');
+  require_once(__DIR__ . '/wp-config-local.php');
 
 /**
  * Pantheon platform settings. Everything you need should already be set.
@@ -149,18 +149,6 @@ if ( ! defined( 'WP_DEBUG' ) ) {
 
 /** Changes location where Autoptimize stores optimized files */
 define('AUTOPTIMIZE_CACHE_CHILD_DIR','/uploads/autoptimize/');
-
-// Contact Form 7 Tweaks Needed
-$_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
-
-if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  if (isset($_SERVER['HTTP_USER_AGENT_HTTPS']) && $_SERVER['HTTP_USER_AGENT_HTTPS'] === 'ON') {
-    $_SERVER['SERVER_PORT'] = 443;
-  }
-  else {
-    $_SERVER['SERVER_PORT'] = 80;
-  }
-}
 
 /* That's all, stop editing! Happy Pressing. */
 

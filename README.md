@@ -7,7 +7,8 @@ This starter state includes:
 <ins>Theming / Site Building</ins>
 - [Timber Library](https://wordpress.org/plugins/timber-library/)
 - [Ke$ha: Tandem's Timber Starter Theme feat. Bootstrap 4](https://github.com/thinktandem/kesha)
-- [Contact Form 7](https://wordpress.org/plugins/contact-form-7/)
+- [Gravity Forms](https://www.gravityforms.com/)
+	  - You will need to buy a key to make this plugin work
 - [Classic Editor](https://wordpress.org/plugins/classic-editor/)
 - [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/)
 	  - You will need to buy a key to make this plugin work

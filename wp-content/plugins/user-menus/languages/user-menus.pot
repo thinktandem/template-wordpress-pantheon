@@ -1,4 +1,4 @@
-# Copyright (C) 2019 user-menus
+# Copyright (C) 2020 user-menus
 # This file is distributed under the same license as the user-menus package.
 msgid ""
 msgstr ""
@@ -23,23 +23,23 @@ msgstr ""
 msgid "Plugin Activation Error"
 msgstr ""
 
-#: includes/classes/admin/menu-editor.php:55
+#: includes/classes/admin/menu-editor.php:60
 msgid "User Links"
 msgstr ""
 
-#: includes/classes/admin/menu-editor.php:67
+#: includes/classes/admin/menu-editor.php:72
 msgid "Login"
 msgstr ""
 
-#: includes/classes/admin/menu-editor.php:71
+#: includes/classes/admin/menu-editor.php:76
 msgid "Register"
 msgstr ""
 
-#: includes/classes/admin/menu-editor.php:76
+#: includes/classes/admin/menu-editor.php:81
 msgid "Logout"
 msgstr ""
 
-#: includes/classes/admin/menu-editor.php:176
+#: includes/classes/admin/menu-editor.php:181
 msgid "Insert User Menu Codes"
 msgstr ""
 
@@ -51,51 +51,51 @@ msgstr ""
 msgid "Import nav menus and other menu item meta skipped by the default importer"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:40
+#: includes/classes/admin/menu-settings.php:41
 msgid "Avatar Size"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:52
+#: includes/classes/admin/menu-settings.php:53
 msgid "Everyone"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:53
+#: includes/classes/admin/menu-settings.php:54
 msgid "Logged Out Users"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:54
+#: includes/classes/admin/menu-settings.php:55
 msgid "Logged In Users"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:60
+#: includes/classes/admin/menu-settings.php:61
 msgid "Current Page"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:61
+#: includes/classes/admin/menu-settings.php:62
 msgid "Home Page"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:62
+#: includes/classes/admin/menu-settings.php:63
 msgid "Custom URL"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:69
+#: includes/classes/admin/menu-settings.php:70
 msgid "Where should users be taken afterwards?"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:87
+#: includes/classes/admin/menu-settings.php:88
 msgid "Enter a url user should be redirected to"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:99, includes/classes/admin/menu-settings.php:123
+#: includes/classes/admin/menu-settings.php:100, includes/classes/admin/menu-settings.php:124
 msgid "Who can see this link?"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:141
+#: includes/classes/admin/menu-settings.php:142
 msgid "Choose which roles can see this link"
 msgstr ""
 
-#: includes/classes/admin/menu-settings.php:148
+#: includes/classes/admin/menu-settings.php:149
 msgid "Choose which roles won't see this link"
 msgstr ""
 

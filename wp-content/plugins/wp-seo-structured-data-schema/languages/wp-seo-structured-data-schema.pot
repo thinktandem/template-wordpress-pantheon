@@ -13,63 +13,63 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../lib/classes/KcSeoHelper.php:189
+#: ../lib/classes/KcSeoHelper.php:207
 msgid "Pro Version Features"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:191
+#: ../lib/classes/KcSeoHelper.php:209
 msgid "Includes Auto-fill function <---Popular"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:192
+#: ../lib/classes/KcSeoHelper.php:210
 msgid "Supports Custom Post Types beyond default page and posts"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:193
+#: ../lib/classes/KcSeoHelper.php:211
 msgid "Supports WordPress Multisite"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:194
+#: ../lib/classes/KcSeoHelper.php:212
 msgid "Supports more schema types:"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:196
+#: ../lib/classes/KcSeoHelper.php:214
 msgid "Books"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:197
+#: ../lib/classes/KcSeoHelper.php:215
 msgid "Courses"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:198
+#: ../lib/classes/KcSeoHelper.php:216
 msgid "Job Postings"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:199
+#: ../lib/classes/KcSeoHelper.php:217
 msgid "Movies"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:200, ../lib/functions/KcSeoOptions.php:995
+#: ../lib/classes/KcSeoHelper.php:218, ../lib/functions/KcSeoOptions.php:995
 msgid "Music"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:201, ../lib/functions/KcSeoOptions.php:999
+#: ../lib/classes/KcSeoHelper.php:219, ../lib/functions/KcSeoOptions.php:999
 msgid "Recipe"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:202
+#: ../lib/classes/KcSeoHelper.php:220
 msgid "TV Episode"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:203, ../lib/functions/KcSeoOptions.php:1007
+#: ../lib/classes/KcSeoHelper.php:221, ../lib/functions/KcSeoOptions.php:1007
 msgid "QAPage"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:204, ../lib/functions/KcSeoOptions.php:1011
+#: ../lib/classes/KcSeoHelper.php:222, ../lib/functions/KcSeoOptions.php:1011
 msgid "Item List"
 msgstr ""
 
-#: ../lib/classes/KcSeoHelper.php:210
+#: ../lib/classes/KcSeoHelper.php:228
 msgid "Get the Pro Version"
 msgstr ""
 

@@ -5,7 +5,7 @@ if (function_exists('load_plugin_textdomain')) {
 
 $dismissed = get_option('hefo_dismissed', array());
 
-if (isset($_REQUEST['dismiss']) && check_admin_referer()) {
+if (isset($_REQUEST['dismiss']) && check_admin_referer('dismiss')) {
     $dismissed[$_REQUEST['dismiss']] = 1;
     update_option('hefo_dismissed', $dismissed);
     wp_redirect('?page=header-footer%2Foptions.php');
@@ -254,7 +254,7 @@ wp_enqueue_code_editor(['type'=>'php']);
         <div class="notice notice-success"><p>
                 I never asked before and I'm curious: <a href="http://wordpress.org/extend/plugins/header-footer/" target="_blank"><strong>would you rate this plugin</strong></a>?
                 (takes only few seconds required - account on WordPress.org, every blog owner should have one...). <strong>Really appreciated, Stefano</strong>.
-                <a class="hefo-dismiss" href="<?php echo wp_nonce_url($_SERVER['REQUEST_URI'] . '&dismiss=rate&noheader=1') ?>">&times;</a>
+                <a class="hefo-dismiss" href="<?php echo wp_nonce_url($_SERVER['REQUEST_URI'] . '&dismiss=rate&noheader=1', 'dismiss') ?>">&times;</a>
             </p>   
         </div>
     <?php } ?>
@@ -268,7 +268,7 @@ wp_enqueue_code_editor(['type'=>'php']);
                 <input type="email" name="ne" value="<?php echo esc_attr(get_option('admin_email')) ?>">
                 <input type="submit" value="Subscribe">
             </form>
-            <a class="hefo-dismiss" href="<?php echo wp_nonce_url($_SERVER['REQUEST_URI'] . '&dismiss=newsletter&noheader=1') ?>">&times;</a>
+            <a class="hefo-dismiss" href="<?php echo wp_nonce_url($_SERVER['REQUEST_URI'] . '&dismiss=newsletter&noheader=1', 'dismiss') ?>">&times;</a>
             </p>   
         </div>
     <?php } ?>      
