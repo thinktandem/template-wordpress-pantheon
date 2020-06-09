@@ -1,6 +1,70 @@
 (function ($) {
     'use strict';
 
+    $(document).on('click', '.kcseo-group-duplicate', function () {
+        var self = $(this),
+            wrapper = self.parents('.kcseo-group-wrapper'),
+            target = self.parents(".kcseo-group-item"),
+            group_id = wrapper.attr('data-group-id'),
+            group_index = target.attr('data-index'),
+            count = wrapper.find(".kcseo-group-item").length,
+            post_fix = "_" + count,
+            html = $("<div class='kcseo-group-item' data-index='" + count + "' />");
+        html.append('<div class="kc-top-toolbar"><span class="kcseo-remove-group"><span class="dashicons dashicons-trash"></span>Remove</span></div>');
+        html.hide();
+        target.find("> .field-container ").each(function () {
+            var item = $(this).clone(),
+                field = item.find(".field-content").find("input, select, textarea") || '',
+                name = field.attr("name") || '',
+                field_container = item.find(".field-content"),
+                label = item.find("label.field-label"),
+                label_for = label.attr("for") + post_fix;
+            item.attr("id", item.attr("id") + post_fix);
+            label.attr("for", label_for);
+            field_container.attr("id", field_container.attr("id") + post_fix);
+            if (name) {
+                field.attr("id", label_for);
+                field.attr("name", name.replace(group_id + "[" + group_index + "]", group_id + "[" + count + "]"));
+            }
+            html.append(item);
+        });
+        if (wrapper.data('duplicate') === 1) {
+            html.append('<div class="kc-bottom-toolbar"><span class="button button-primary kcseo-group-duplicate">Duplicate Item</span></div>');
+        }
+        wrapper.append(html);
+        html.slideDown(500);
+    });
+
+    $(document).on('click', 'span.kcseo-remove-group', function () {
+        var self = $(this),
+            wrapper = self.parents('.kcseo-group-wrapper'),
+            target = self.parents(".kcseo-group-item"),
+            group_id = wrapper.attr('data-group-id');
+        target.slideUp(500, function () {
+            $(this).remove();
+            wrapper.find("> .kcseo-group-item ").each(function (count, v) {
+                var group_index = $(this).attr('data-index'),
+                    post_fix = "_" + count;
+                $(this).attr('data-index', count);
+                $(this).find("> .field-container ").each(function () {
+                    var item = $(this),
+                        field = item.find(".field-content").find("input, select, textarea") || '',
+                        name = field.attr("name") || '',
+                        field_container = item.find(".field-content"),
+                        label = item.find("label.field-label"),
+                        label_for = label.attr("for") + post_fix;
+                    item.attr("id", item.attr("id") + post_fix);
+                    label.attr("for", label_for);
+                    field_container.attr("id", field_container.attr("id") + post_fix);
+                    if (name) {
+                        field.attr("id", label_for);
+                        field.attr("name", name.replace(group_id + "[" + group_index + "]", group_id + "[" + count + "]"));
+                    }
+                });
+            });
+        });
+    });
+
     wpSeoShowHideType();
     $("#site_type, #_schema_aggregate_rating_schema_type").change(function () {
         wpSeoShowHideType();

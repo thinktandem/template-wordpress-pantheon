@@ -8,7 +8,7 @@
 namespace Yoast\WP\SEO\Surfaces;
 
 use Yoast\WP\SEO\Helpers\Schema;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class Schema_Helpers_Surface
@@ -53,10 +53,11 @@ class Schema_Helpers_Surface {
 	 */
 	public function __get( $helper ) {
 		if ( \in_array( $helper, $this->capitalized_helpers, true ) ) {
-			$helper = strtoupper( $helper );
+			$helper = \strtoupper( $helper );
 		}
-		$helper = implode( '_', array_map( 'ucfirst', explode( '_', $helper ) ) );
+		$helper = \implode( '_', \array_map( 'ucfirst', \explode( '_', $helper ) ) );
 		$class  = "Yoast\WP\SEO\Helpers\Schema\\{$helper}_Helper";
+
 		return $this->container->get( $class );
 	}
 }

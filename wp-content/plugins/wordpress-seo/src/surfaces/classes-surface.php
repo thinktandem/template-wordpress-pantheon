@@ -7,12 +7,13 @@
 
 namespace Yoast\WP\SEO\Surfaces;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class Classes_Surface
  */
 class Classes_Surface {
+
 	/**
 	 * Loader constructor.
 	 *

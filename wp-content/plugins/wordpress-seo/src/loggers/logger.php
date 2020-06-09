@@ -7,9 +7,9 @@
 
 namespace Yoast\WP\SEO\Loggers;
 
-use Psr\Log\LoggerInterface;
-use Psr\Log\LoggerTrait;
-use Psr\Log\NullLogger;
+use YoastSEO_Vendor\Psr\Log\LoggerInterface;
+use YoastSEO_Vendor\Psr\Log\LoggerTrait;
+use YoastSEO_Vendor\Psr\Log\NullLogger;
 
 /**
  * Our logger class.
@@ -18,11 +18,11 @@ class Logger implements LoggerInterface {
 	use LoggerTrait;
 
 	/**
-  * The logger object.
-  *
-  * @var \Psr\Log\LoggerInterface
-  */
- protected $wrapped_logger;
+	 * The logger object.
+	 *
+	 * @var LoggerInterface
+	 */
+	protected $wrapped_logger;
 
 	/**
 	 * Logger constructor.
@@ -31,13 +31,13 @@ class Logger implements LoggerInterface {
 		$this->wrapped_logger = new NullLogger();
 
 		/**
-   * Gives the possibility to set override the logger interface.
-   *
-   * @api \Psr\Log\LoggerInterface $logger Instance of NullLogger.
-   *
-   * @return \Psr\Log\LoggerInterface The logger object.
-   */
-  $this->wrapped_logger = \apply_filters( 'wpseo_logger', $this->wrapped_logger );
+		 * Gives the possibility to set override the logger interface.
+		 *
+		 * @api \YoastSEO_Vendor\Psr\Log\LoggerInterface $logger Instance of NullLogger.
+		 *
+		 * @return LoggerInterface The logger object.
+		 */
+		$this->wrapped_logger = \apply_filters( 'wpseo_logger', $this->wrapped_logger );
 	}
 
 	/**

@@ -85,6 +85,19 @@ if (!class_exists('KcSeoSettings')):
                     $newValue = esc_url($value);
                 } else if ($type == 'textarea') {
                     $newValue = wp_kses($value, array());
+                } else if ($field['type'] == 'group' && !empty($field['fields'])) {
+                    $newGValue = array();
+                    $groupValue = !empty($value) && is_array($value) ? $value : array();
+                    foreach ($groupValue as $gId => $gValue) {
+                        $newVItem = array();
+                        foreach ($field['fields'] as $gFid => $fieldItem) {
+                            if (isset($gValue[$gFid])) {
+                                $newVItem[$gFid] = $this->sanitize($fieldItem, $gValue[$gFid]);
+                            }
+                        }
+                        array_push($newGValue, $newVItem);
+                    }
+                    $newValue = $newGValue;
                 } else {
                     $newValue = sanitize_text_field($value);
                 }

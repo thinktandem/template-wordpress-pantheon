@@ -10,7 +10,7 @@ namespace Yoast\WP\SEO\Memoizers;
 use Yoast\WP\SEO\Context\Meta_Tags_Context;
 use Yoast\WP\SEO\Models\Indexable;
 use Yoast\WP\SEO\Presentations\Indexable_Presentation;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class Presentation_Memoizer
@@ -58,7 +58,14 @@ class Presentation_Memoizer {
 				$presentation = $this->container->get( Indexable_Presentation::class );
 			}
 
-			$this->cache[ $indexable->id ] = $context->presentation = $presentation->of( [ 'model' => $indexable, 'context' => $context ] );
+			$context->presentation = $presentation->of(
+				[
+					'model'   => $indexable,
+					'context' => $context,
+				]
+			);
+
+			$this->cache[ $indexable->id ] = $context->presentation;
 		}
 
 		return $this->cache[ $indexable->id ];
@@ -74,7 +81,7 @@ class Presentation_Memoizer {
 			unset( $this->cache[ $indexable->id ] );
 			return;
 		}
-		if ( is_int( $indexable ) ) {
+		if ( \is_int( $indexable ) ) {
 			unset( $this->cache[ $indexable ] );
 		}
 		if ( $indexable === null ) {

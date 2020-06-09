@@ -668,7 +668,82 @@ if (!class_exists('KcSeoSchemaModel')):
                             $html .= $this->get_jsonEncode(apply_filters('kcseo_snippet_local_business_review', $local_business_review, $metaData));
                         }
                         break;
+                    case 'specialAnnouncement':
+                        $announcement = array(
+                            "@context" => "http://schema.org",
+                            "@type"    => "SpecialAnnouncement",
+                            "category" => "https://www.wikidata.org/wiki/Q81068910"
+                        );
+                        if (!empty($metaData['name'])) {
+                            $announcement['name'] = $KcSeoWPSchema->sanitizeOutPut($metaData['name']);
+                        }
+                        if (!empty($metaData['datePublished'])) {
+                            $announcement['datePosted'] = $KcSeoWPSchema->sanitizeOutPut($metaData['datePublished']);
+                        }
+                        if (!empty($metaData['expires'])) {
+                            $announcement['expires'] = $KcSeoWPSchema->sanitizeOutPut($metaData['expires']);
+                        }
+                        if (!empty($metaData['text'])) {
+                            $announcement['text'] = $KcSeoWPSchema->sanitizeOutPut($metaData['text'], 'textarea');
+                        }
+                        if (!empty($metaData['url'])) {
+                            $announcement['url'] = $KcSeoWPSchema->sanitizeOutPut($metaData['url'], 'url');
+                        }
+                        if (isset($metaData['locations']) && is_array($metaData['locations']) && !empty($metaData['locations'])) {
+                            $locations_schema = [];
+                            foreach ($metaData['locations'] as $position => $location) {
+                                if ($location['type']) {
+                                    $location_schema = array(
+                                        "@type"   => $KcSeoWPSchema->sanitizeOutPut($location['type']),
+                                        'name'    => !empty($location['name']) ? $KcSeoWPSchema->sanitizeOutPut($location['name']) : "",
+                                        'url'     => !empty($location['url']) ? $KcSeoWPSchema->sanitizeOutPut($location['url'], 'url') : '',
+                                        "address" => [
+                                            "@type" => "PostalAddress",
+                                        ]
+                                    );
+                                    if (!empty($location['id'])) {
+                                        $location_schema['@id'] = $KcSeoWPSchema->sanitizeOutPut($location['id']);
+                                    }
+                                    if (!empty($location['image'])) {
+                                        $img = $KcSeoWPSchema->imageInfo(absint($location['image']));
+                                        $location_schema["image"] = $KcSeoWPSchema->sanitizeOutPut($img['url'], 'url');
+                                    }
+                                    if (!empty($location['url'])) {
+                                        $location_schema['url'] = $KcSeoWPSchema->sanitizeOutPut($location['url'], 'url');
+                                    }
+                                    if (!empty($location['address_street'])) {
+                                        $location_schema['address']['streetAddress'] = $KcSeoWPSchema->sanitizeOutPut($location['address_street']);
+                                    }
+                                    if (!empty($location['address_locality'])) {
+                                        $location_schema['address']['addressLocality'] = $KcSeoWPSchema->sanitizeOutPut($location['address_locality']);
+                                    }
+                                    if (!empty($location['address_post_code'])) {
+                                        $location_schema['address']['postalCode'] = $KcSeoWPSchema->sanitizeOutPut($location['address_post_code']);
+                                    }
+                                    if (!empty($location['address_region'])) {
+                                        $location_schema['address']['addressRegion'] = $KcSeoWPSchema->sanitizeOutPut($location['address_region']);
+                                    }
+                                    if (!empty($location['address_country'])) {
+                                        $location_schema['address']['addressCountry'] = $KcSeoWPSchema->sanitizeOutPut($location['address_country']);
+                                    }
+                                    if (!empty($location['priceRange'])) {
+                                        $location_schema["priceRange"] = $KcSeoWPSchema->sanitizeOutPut($location['priceRange']);
+                                    }
+                                    if (!empty($location['telephone'])) {
+                                        $location_schema["telephone"] = $KcSeoWPSchema->sanitizeOutPut($location['telephone']);
+                                    }
+                                    array_push($locations_schema, $location_schema);
+                                }
 
+                            }
+                            if (count($locations_schema) === 1) {
+                                $announcement['announcementLocation'] = $locations_schema[0];
+                            } else {
+                                $announcement['announcementLocation'] = $locations_schema;
+                            }
+                        }
+                        $html .= $this->get_jsonEncode(apply_filters('kcseo_snippet_item_list', $announcement, $metaData));
+                        break;
                     default:
                         break;
                 }

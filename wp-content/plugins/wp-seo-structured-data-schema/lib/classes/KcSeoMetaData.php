@@ -84,7 +84,37 @@ if ( ! class_exists( 'KcSeoMetaData' ) ):
 						$data['id']      = $tabId . "_" . $fieldId;
 						$data['name']    = $tabId . "[{$fieldId}]";
 						$data['value']   = ( ! empty( $metaData[ $fieldId ] ) ? $metaData[ $fieldId ] : null );
-						$htmlCont        .= $schemas->get_field( $data );
+                        if ($data['type'] === 'group' && !empty($data['fields'])) {
+                            $groupMetaData = isset($metaData[$fieldId]) && !empty($metaData[$fieldId]) ? $metaData[$fieldId] : array(array());
+                            $html_g = null;
+                            $i = 0;
+                            foreach ($groupMetaData as $imDataId => $mData) {
+                                $html_gItem = null;
+                                foreach ($data['fields'] as $gFid => $field) {
+                                    $field['fieldId'] = $fieldId . '-' . $gFid;
+                                    $field['id'] = $tabId . "_" . $fieldId . '_' . $gFid;
+                                    $field['name'] = $tabId . "[$fieldId]" . "[$imDataId][$gFid]";
+                                    $field['value'] = (!empty($mData[$gFid]) ? $mData[$gFid] : null);
+                                    $html_gItem .= $schemas->get_field($field);
+                                }
+                                $html_g .= sprintf('<div class="kcseo-group-item" data-index="%d" id="%s">%s%s%s</div>',
+                                    $imDataId,
+                                    $tabId . "_" . $fieldId . "_group_item_" . $imDataId,
+                                    isset($data['duplicate']) && $imDataId > 0 ? '<div class="kc-top-toolbar"><span class="kcseo-remove-group"><span class="dashicons dashicons-trash"></span>Remove</span></div>' : null,
+                                    $html_gItem,
+                                    isset($data['duplicate']) ? '<div class="kc-bottom-toolbar"><span class="button button-primary kcseo-group-duplicate">Duplicate item</span></div>' : null
+                                );
+                            }
+                            $htmlCont .= sprintf('<div class="field-container kcseo-group-wrapper" data-duplicate="%d" data-group-id="%s" id="%s">%s</div>',
+                                isset($data['duplicate']) ? true : false,
+                                $tabId . "[$fieldId]",
+                                $tabId . "_" . $fieldId . "_group_wrapper",
+                                $html_g
+                            );
+
+                        }else {
+                            $htmlCont .= $schemas->get_field($data);
+                        }
 					}
 				}
 				if ( ! empty( $schema['pro'] ) && $schema['pro'] ) {

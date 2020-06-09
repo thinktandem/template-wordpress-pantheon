@@ -5,7 +5,7 @@ class KcSeoOptions
 
     static function getSchemaTypes() {
         $schemas = array(
-            'article'          => array(
+            'article'             => array(
                 'pro'    => false,
                 'title'  => __("Article", "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -41,14 +41,14 @@ class KcSeoOptions
                         'type'     => 'text',
                         'class'    => 'kcseo-date',
                         'required' => true,
-                        'desc'     => __('Like this: 2015-12-25 4:00 PM', "wp-seo-structured-data-schema")
+                        'desc'     => __('Like this: 2015-12-25 14:20:00', "wp-seo-structured-data-schema")
                     ),
                     'dateModified'        => array(
                         'title'    => __('Modified date', "wp-seo-structured-data-schema"),
                         'type'     => 'text',
                         'class'    => 'kcseo-date',
                         'required' => true,
-                        'desc'     => __('Like this: 2015-12-25 4:00 PM', "wp-seo-structured-data-schema")
+                        'desc'     => __('Like this: 2015-12-25 14:20:00', "wp-seo-structured-data-schema")
                     ),
                     'publisher'           => array(
                         'title'    => __('Publisher', "wp-seo-structured-data-schema"),
@@ -79,7 +79,7 @@ class KcSeoOptions
                     ),
                 )
             ),
-            'blog_posting'     => array(
+            'blog_posting'        => array(
                 'pro'    => false,
                 'title'  => __('Blog Posting', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -114,14 +114,14 @@ class KcSeoOptions
                         'title'    => __('Published date', "wp-seo-structured-data-schema"),
                         'type'     => 'text',
                         'class'    => 'kcseo-date',
-                        'desc'     => __('Like this: 2015-12-25 4:00 PM', "wp-seo-structured-data-schema"),
+                        'desc'     => __('Like this: 2015-12-25 14:20:00', "wp-seo-structured-data-schema"),
                         'required' => true
                     ),
                     'dateModified'     => array(
                         'title'    => __('Modified date', "wp-seo-structured-data-schema"),
                         'type'     => 'text',
                         'class'    => 'kcseo-date',
-                        'desc'     => __('Like this: 2015-12-25 4:00 PM', "wp-seo-structured-data-schema"),
+                        'desc'     => __('Like this: 2015-12-25 14:20:00', "wp-seo-structured-data-schema"),
                         'required' => true
                     ),
                     'publisher'        => array(
@@ -148,7 +148,7 @@ class KcSeoOptions
                     )
                 )
             ),
-            'news_article'     => array(
+            'news_article'        => array(
                 'pro'    => false,
                 'title'  => __('News Article', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -183,7 +183,7 @@ class KcSeoOptions
                         'title'    => __('Published date', "wp-seo-structured-data-schema"),
                         'type'     => 'text',
                         'class'    => 'kcseo-date',
-                        'desc'     => __('Like this: 2015-12-25 4:00 PM', "wp-seo-structured-data-schema"),
+                        'desc'     => __('Like this: 2015-12-25 14:20:00', "wp-seo-structured-data-schema"),
                         'required' => true
                     ),
                     'dateModified'     => array(
@@ -191,7 +191,7 @@ class KcSeoOptions
                         'type'     => 'text',
                         'class'    => 'kcseo-date',
                         'required' => true,
-                        'desc'     => __('Like this: 2015-12-25 4:00 PM', "wp-seo-structured-data-schema")
+                        'desc'     => __('Like this: 2015-12-25 14:20:00', "wp-seo-structured-data-schema")
                     ),
                     'publisher'        => array(
                         'title'    => __('Publisher', "wp-seo-structured-data-schema"),
@@ -217,7 +217,7 @@ class KcSeoOptions
                     )
                 )
             ),
-            'event'            => array(
+            'event'               => array(
                 'pro'    => false,
                 'title'  => __('Event', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -341,7 +341,7 @@ class KcSeoOptions
                         'title' => __('Date of Published', "wp-seo-structured-data-schema"),
                         'type'  => 'text',
                         'class' => 'kcseo-date',
-                        'desc'  => __("Like this: 2015-12-25 4:00 PM", "wp-seo-structured-data-schema")
+                        'desc'  => __("Like this: 2015-12-25 14:20:00", "wp-seo-structured-data-schema")
                     ),
                     'review_ratingValue'   => array(
                         'title' => __('Rating value', "wp-seo-structured-data-schema"),
@@ -363,7 +363,7 @@ class KcSeoOptions
                     )
                 )
             ),
-            'product'          => array(
+            'product'             => array(
                 'pro'    => false,
                 'title'  => __('Product', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -518,7 +518,7 @@ class KcSeoOptions
                     ),
                 )
             ),
-            'video'            => array(
+            'video'               => array(
                 'pro'    => false,
                 'title'  => __('Video', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -576,11 +576,11 @@ class KcSeoOptions
                         'title' => __('Expires', "wp-seo-structured-data-schema"),
                         'type'  => 'text',
                         'class' => 'kcseo-date',
-                        'desc'  => __("Like this: 2015-12-25 4:00 PM", "wp-seo-structured-data-schema")
+                        'desc'  => __("Like this: 2015-12-25 14:20:00", "wp-seo-structured-data-schema")
                     ),
                 )
             ),
-            'service'          => array(
+            'service'             => array(
                 'pro'    => false,
                 'title'  => __('Service', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -657,7 +657,7 @@ class KcSeoOptions
                     ),
                 )
             ),
-            'review'           => array(
+            'review'              => array(
                 'pro'    => false,
                 'title'  => __('Review', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -698,7 +698,7 @@ class KcSeoOptions
                         'title' => __('Date of Published', "wp-seo-structured-data-schema"),
                         'type'  => 'text',
                         'class' => 'kcseo-date',
-                        'desc'  => __("Like this: 2015-12-25 4:00 PM", "wp-seo-structured-data-schema")
+                        'desc'  => __("Like this: 2015-12-25 14:20:00", "wp-seo-structured-data-schema")
                     ),
                     'ratingValue'           => array(
                         'title' => __('Rating value', "wp-seo-structured-data-schema"),
@@ -725,7 +725,7 @@ class KcSeoOptions
                     )
                 )
             ),
-            'aggregate_rating' => array(
+            'aggregate_rating'    => array(
                 'pro'    => false,
                 'title'  => __('Aggregate Ratings', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -792,13 +792,6 @@ class KcSeoOptions
                     ),
                     'ratingValue' => array(
                         'title'    => __('Rating Value', "wp-seo-structured-data-schema"),
-                        'type'     => 'number',
-                        'attr'     => 'step="any"',
-                        'required' => true,
-                        'desc'     => __("A numerical quality rating for the item.", "wp-seo-structured-data-schema")
-                    ),
-                    'ratingValue' => array(
-                        'title'    => __('Rating Value', "wp-seo-structured-data-schema"),
                         'attr'     => 'step="any"',
                         'type'     => 'number',
                         'required' => true,
@@ -820,7 +813,7 @@ class KcSeoOptions
                     )
                 )
             ),
-            'restaurant'       => array(
+            'restaurant'          => array(
                 'pro'    => false,
                 'title'  => __('Restaurant', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -872,7 +865,7 @@ class KcSeoOptions
                     )
                 )
             ),
-            'localBusiness'    => array(
+            'localBusiness'       => array(
                 'pro'    => false,
                 'title'  => __('Local Business', "wp-seo-structured-data-schema"),
                 'fields' => array(
@@ -952,7 +945,7 @@ class KcSeoOptions
                         'title' => __('Date of Published', "wp-seo-structured-data-schema"),
                         'type'  => 'text',
                         'class' => 'kcseo-date',
-                        'desc'  => __("Like this: 2015-12-25 4:00 PM", "wp-seo-structured-data-schema")
+                        'desc'  => __("Like this: 2015-12-25 14:20:00", "wp-seo-structured-data-schema")
                     ),
                     'review_ratingValue'   => array(
                         'title' => __('Rating value', "wp-seo-structured-data-schema"),
@@ -974,42 +967,161 @@ class KcSeoOptions
                     )
                 )
             ),
-            'book'             => array(
+            'book'                => array(
                 'pro'   => true,
                 'title' => __("Book", "wp-seo-structured-data-schema"),
             ),
-            'course'           => array(
+            'course'              => array(
                 'pro'   => true,
                 'title' => __("Course", "wp-seo-structured-data-schema"),
             ),
-            'JobPosting'       => array(
+            'JobPosting'          => array(
                 'pro'   => true,
                 'title' => __("Job Posting", "wp-seo-structured-data-schema"),
             ),
-            'movie'            => array(
+            'movie'               => array(
                 'pro'   => true,
                 'title' => __("Movie", "wp-seo-structured-data-schema"),
             ),
-            'music'            => array(
+            'music'               => array(
                 'pro'   => true,
                 'title' => __("Music", "wp-seo-structured-data-schema"),
             ),
-            'recipe'           => array(
+            'recipe'              => array(
                 'pro'   => true,
                 'title' => __("Recipe", "wp-seo-structured-data-schema"),
             ),
-            'TVEpisode'        => array(
+            'TVEpisode'           => array(
                 'pro'   => true,
                 'title' => __("TVEpisode", "wp-seo-structured-data-schema"),
             ),
-            'question'         => array(
+            'question'            => array(
                 'pro'   => true,
                 'title' => __("QAPage", "wp-seo-structured-data-schema"),
             ),
-            'itemList'         => array(
+            'itemList'            => array(
                 'pro'   => true,
                 'title' => __("Item List", "wp-seo-structured-data-schema"),
-            )
+            ),
+            'specialAnnouncement' => [
+                'title'  => __('Special Announcement', "wp-seo-structured-data-schema-pro"),
+                'fields' => [
+                    'active'        => [
+                        'type' => 'checkbox'
+                    ],
+                    'name'          => [
+                        'title'    => __('Name', "wp-seo-structured-data-schema-pro"),
+                        'type'     => 'text',
+                        'desc'     => __('SpecialAnnouncement.name: Name of the announcement. This text should be present on the underlying page.', "wp-seo-structured-data-schema-pro"),
+                        'required' => true
+                    ],
+                    'url'           => [
+                        'title'    => __('Page URL', "wp-seo-structured-data-schema-pro"),
+                        'type'     => 'url',
+                        'desc'     => __('SpecialAnnouncement.url: URL of the page containing the announcements. If present, this must match the URL of the page containing the information.', "wp-seo-structured-data-schema-pro"),
+                        'required' => true
+                    ],
+                    'datePublished' => [
+                        'title'    => __('Published date', "wp-seo-structured-data-schema-pro"),
+                        'type'     => 'text',
+                        'class'    => 'kcseo-date',
+                        'desc'     => __('Like this: 2015-12-25 14:20:00', "wp-seo-structured-data-schema-pro"),
+                        'required' => true
+                    ],
+                    'expires'       => [
+                        'title'       => __('Expires date', "wp-seo-structured-data-schema-pro"),
+                        'type'        => 'text',
+                        'class'       => 'kcseo-date',
+                        'desc'        => __('Like this: 2015-12-25 14:20:00', "wp-seo-structured-data-schema-pro"),
+                        'recommended' => true,
+                    ],
+                    'text'          => [
+                        'title'    => __('Text', "wp-seo-structured-data-schema-pro"),
+                        'type'     => 'textarea',
+                        'desc'     => __('SpecialAnnouncement.text: Text of the announcements.', "wp-seo-structured-data-schema-pro"),
+                        'required' => true
+                    ],
+                    'locations'     => [
+                        'title'     => __('Announcement Locations', "wp-seo-structured-data-schema-pro"),
+                        'type'      => 'group',
+                        'duplicate' => true,
+                        'fields'    => [
+                            'location_heading'  => [
+                                'type'  => 'heading',
+                                'title' => __('Announcement Location', "wp-seo-structured-data-schema-pro")
+                            ],
+                            'type'              => [
+                                'title'    => __('Type', "wp-seo-structured-data-schema-pro"),
+                                'type'     => 'select',
+                                'options'  => self::announcementLocationTypes(),
+                                'required' => true
+                            ],
+                            'name'              => [
+                                'title'       => __('Name', "wp-seo-structured-data-schema-pro"),
+                                'type'        => 'text',
+                                'desc'        => __("SpecialAnnouncement.announcementLocation.name: ", "wp-seo-structured-data-schema-pro"),
+                                'recommended' => true,
+                            ],
+                            'url'               => [
+                                'title'       => __('URL', "wp-seo-structured-data-schema-pro"),
+                                'type'        => 'url',
+                                'recommended' => true,
+                                'desc'        => __("SpecialAnnouncement.announcementLocation.url: URL", "wp-seo-structured-data-schema-pro")
+                            ],
+                            'address_street'    => [
+                                'title'       => __('Address: Street', "wp-seo-structured-data-schema-pro"),
+                                'type'        => 'text',
+                                'desc'        => __('SpecialAnnouncement.announcementLocation.address.streetAddress: The street address. For example, 1600 Amphitheatre Pkwy.', "wp-seo-structured-data-schema-pro"),
+                                'recommended' => true,
+                            ],
+                            'address_locality'  => [
+                                'title'       => __('Address: Locality', "wp-seo-structured-data-schema-pro"),
+                                'type'        => 'text',
+                                'desc'        => __('SpecialAnnouncement.announcementLocation.address.addressLocality: The locality in which the street address is, and which is in the region. For example, Mountain View.', "wp-seo-structured-data-schema-pro"),
+                                'recommended' => true,
+                            ],
+                            'address_post_code' => [
+                                'title'       => __('Address: Post Code', "wp-seo-structured-data-schema-pro"),
+                                'type'        => 'text',
+                                'desc'        => __('SpecialAnnouncement.announcementLocation.address.postalCode: The postal code. For example, 94043.', "wp-seo-structured-data-schema-pro"),
+                                'recommended' => true,
+                            ],
+                            'address_region'    => [
+                                'title'       => __('Address: Region', "wp-seo-structured-data-schema-pro"),
+                                'type'        => 'text',
+                                'desc'        => __('SpecialAnnouncement.announcementLocation.address.addressRegion: The region in which the locality is, and which is in the country. For example, California.', "wp-seo-structured-data-schema-pro"),
+                                'recommended' => true,
+                            ],
+                            'address_country'   => [
+                                'title'       => __('Address: Country', "wp-seo-structured-data-schema-pro"),
+                                'type'        => 'text',
+                                'desc'        => __('SpecialAnnouncement.announcementLocation.address.addressCountry: The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.', "wp-seo-structured-data-schema-pro"),
+                                'recommended' => true,
+                            ],
+                            'id'                => [
+                                'title' => __('ID', "wp-seo-structured-data-schema-pro"),
+                                'type'  => 'text',
+                                'desc'  => __('SpecialAnnouncement.announcementLocation.@id: An optional unique identifier so that you can reference pre-existing structured data for this location.', "wp-seo-structured-data-schema-pro"),
+                            ],
+                            'image'             => array(
+                                'title' => __('Image', "wp-seo-structured-data-schema-pro"),
+                                'type'  => 'image'
+                            ),
+                            'priceRange'        => array(
+                                'title'       => 'Price Range (Recommended)',
+                                'type'        => 'text',
+                                'recommended' => true,
+                                'desc'        => __("The price range of the business, for example $$$.", "wp-seo-structured-data-schema-pro")
+                            ),
+                            'telephone'         => array(
+                                'title'       => 'Telephone (Recommended)',
+                                'type'        => 'text',
+                                'recommended' => true
+                            )
+                        ]
+                    ],
+                ]
+            ]
         );
 
         return apply_filters('kcseo_schema_types', $schemas);
@@ -1574,6 +1686,60 @@ class KcSeoOptions
         );
 
         return apply_filters('kcseo_social_list', $socialList);
+    }
+
+
+    static function announcementLocationTypes() {
+        return apply_filters('kcseo_announcement_location_types', [
+            'Airport',
+            'Aquarium',
+            'Beach',
+            'Bridge',
+            'BuddhistTemple',
+            'BusStation',
+            'BusStop',
+            'Campground',
+            'CatholicChurch',
+            'Cemetery',
+            'Church',
+            'CivicStructure',
+            'CityHall',
+            'CollegeOrUniversity',
+            'Courthouse',
+            'CovidTestingFacility',
+            'Crematorium',
+            'DefenceEstablishment',
+            'EducationalOrganization',
+            'ElementarySchool',
+            'Embassy',
+            'EventVenue',
+            'FireStation',
+            'GovernmentBuilding',
+            'HighSchool',
+            'HinduTemple',
+            'Hospital',
+            'LegislativeBuilding',
+            'MiddleSchool',
+            'Mosque',
+            'MovieTheater',
+            'Museum',
+            'MusicVenue',
+            'Park',
+            'ParkingFacility',
+            'PerformingArtsTheater',
+            'PlaceOfWorship',
+            'Playground',
+            'PoliceStation',
+            'Preschool',
+            'RVPark',
+            'School',
+            'StadiumOrArena',
+            'SubwayStation',
+            'Synagogue',
+            'TaxiStand',
+            'TrainStation',
+            'Zoo',
+        ]);
     }
 
     static function getReviewNotice() {

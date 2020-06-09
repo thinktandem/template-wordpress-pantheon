@@ -8,6 +8,7 @@
 namespace Yoast\WP\Lib;
 
 use wpdb;
+use Yoast\WP\SEO\Config\Migration_Status;
 
 /**
  *
@@ -223,12 +224,11 @@ class ORM implements \ArrayAccess {
 	 * Factory method, return an instance of this class bound to the supplied
 	 * table name.
 	 *
-	 * A repeat of content in parent::for_table, so that created class is
-	 * ORMWrapper, not ORM.
+	 * A repeat of content in parent::for_table, so that created class is ORM.
 	 *
-	 * @param string $table_name Table name.      The table to create instance for.
+	 * @param string $table_name The table to create instance for.
 	 *
-	 * @return ORM Instance of the ORM wrapper.
+	 * @return ORM Instance of the ORM.
 	 */
 	public static function for_table( $table_name ) {
 		return new static( $table_name, [] );
@@ -265,9 +265,24 @@ class ORM implements \ArrayAccess {
 		 */
 		global $wpdb;
 
-		$query = $wpdb->prepare( $query, $parameters );
+		$show_errors = $wpdb->show_errors;
 
-		return $wpdb->query( $query );
+		if ( YoastSEO()->classes->get( Migration_Status::class )->get_error( 'free' ) ) {
+			$wpdb->show_errors = false;
+		}
+
+		$parameters = \array_filter( $parameters, function( $parameter ) {
+			return $parameter !== null;
+		} );
+		if ( ! empty( $parameters ) ) {
+			$query  = $wpdb->prepare( $query, $parameters );
+		}
+
+		$result = $wpdb->query( $query );
+
+		$wpdb->show_errors = $show_errors;
+
+		return $result;
 	}
 
 	// ------------------------ //
@@ -387,11 +402,11 @@ class ORM implements \ArrayAccess {
 	 * @return array
 	 */
 	public function find_many() {
-        $rows = $this->_run();
+		$rows = $this->_run();
 
-        if ( $rows === false ) {
-            return [];
-        }
+		if ( $rows === false ) {
+			return [];
+		}
 
 		return \array_map( [ $this, '_create_instance_from_row' ], $rows );
 	}
@@ -1099,7 +1114,7 @@ class ORM implements \ArrayAccess {
 				$key = "{$table}.{$key}";
 			}
 			$key         = $result->_quote_identifier( $key );
-			$placeholder = '%s';
+			$placeholder = ( $val === null ) ? 'NULL' : '%s';
 			$result      = $result->_add_condition( $type, "{$key} {$separator} {$placeholder}", $val );
 		}
 
@@ -1122,7 +1137,7 @@ class ORM implements \ArrayAccess {
 				if ( \array_key_exists( $key, $this->_expr_fields ) ) {
 					$db_fields[] = $value;
 				} else {
-					$db_fields[] = '%s';
+					$db_fields[] = ( $value === null ) ? 'NULL' : '%s';
 				}
 			}
 
@@ -1261,7 +1276,7 @@ class ORM implements \ArrayAccess {
 				}
 				$query[] = $this->_quote_identifier( $key );
 				$data[]  = $item;
-				$query[] = $op . '%s';
+				$query[] = $op . ( ( $item === null ) ? 'NULL' : '%s' );
 			}
 		}
 		$query[] = '))';
@@ -2210,7 +2225,7 @@ class ORM implements \ArrayAccess {
 		$field_list = [];
 		foreach ( $this->_dirty_fields as $key => $value ) {
 			if ( ! \array_key_exists( $key, $this->_expr_fields ) ) {
-				$value = '%s';
+				$value = ( $value === null ) ? 'NULL' : '%s';
 			}
 			$field_list[] = "{$this->_quote_identifier($key)} = {$value}";
 		}

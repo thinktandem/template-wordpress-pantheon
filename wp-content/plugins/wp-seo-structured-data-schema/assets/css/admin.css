@@ -336,6 +336,42 @@ p.description .required,
 }
 
 /* End heading container */
+/* ============== 2nd Level START ============== */
+.kcseo-group-item {
+    padding: 20px;
+    border: 1px dashed #777;
+}
+
+.kc-multiple-schema-tool {
+    padding: 5px;
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.kcseo-group-item .kc-top-toolbar {
+    text-align: right;
+}
+
+span.kc-remove-schema,
+span.kcseo-remove-group {
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.kc-btn-danger {
+    background: red;
+    border-color: red;
+    color: #ffffff;
+}
+
+.multiple-schema-item {
+    border: 2px solid #9ce646;
+    padding: 10px 20px;
+    margin-bottom: 25px;
+}
+
+/* ============== 2nd END ================ */
 .schema-holder .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
     padding: .5em 0.6em;
     font-size: 14px;
