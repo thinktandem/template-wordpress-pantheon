@@ -17,12 +17,7 @@ class Menu_Editor {
 	 * Init
 	 */
 	public static function init() {
-		global $wp_version;
-		
-		if ( version_compare( $wp_version, '5.4-alpha.1', '<' ) ) {
-			add_filter( 'wp_edit_nav_menu_walker', array( __CLASS__, 'nav_menu_walker' ), 999999999 );
-		}
-
+		add_filter( 'wp_edit_nav_menu_walker', array( __CLASS__, 'nav_menu_walker' ), 999999999 );
 		add_action( 'admin_head-nav-menus.php', array( __CLASS__, 'register_metaboxes' ) );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ) );
 	}
@@ -33,14 +28,20 @@ class Menu_Editor {
 	public static function nav_menu_walker( $walker ) {
 		global $wp_version;
 
-		if ( doing_filter( 'plugins_loaded' ) ) {
+		$bail_early = [
+			// WP 5.4 adds support for custom fields, no need to do this hack at all.
+			version_compare( $wp_version, '5.4', '>=' ),
+			// not sure about this one, was part of the original solution.
+			doing_filter( 'plugins_loaded' ),
+			// No need if its already loaded by another plugin.
+			$walker === 'Walker_Nav_Menu_Edit_Custom_Fields',
+		];
+
+		if ( in_array( true, $bail_early ) ) {
 			return $walker;
 		}
 
-		if ( $walker == 'Walker_Nav_Menu_Edit_Custom_Fields' ) {
-			return $walker;
-		}
-
+		// Load custom nav menu walker class for custom field compatibility.
 		if ( ! class_exists( 'Walker_Nav_Menu_Edit_Custom_Fields' ) ) {
 			if ( version_compare( $wp_version, '3.6', '>=' ) ) {
 				require_once \JP_User_Menus::$DIR . 'includes/classes/walker/nav-menu-edit-custom-fields.php';
@@ -74,7 +75,6 @@ class Menu_Editor {
 			array(
 				'object'  => 'register',
 				'title'   => __( 'Register', 'user-menus' ),
-				'classes' => array( 'disabled' ),
 			),
 			array(
 				'object' => 'logout',

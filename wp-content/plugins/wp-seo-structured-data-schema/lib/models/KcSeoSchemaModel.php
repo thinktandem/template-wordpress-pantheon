@@ -380,11 +380,7 @@ if (!class_exists('KcSeoSchemaModel')):
                             $video["name"] = $KcSeoWPSchema->sanitizeOutPut($metaData['name']);
                         }
                         if (!empty($metaData['description'])) {
-                            $video["description"] = $KcSeoWPSchema->sanitizeOutPut($metaData['description'],
-                                'textarea');
-                        }
-                        if (!empty($metaData['description'])) {
-                            $video["description"] = $KcSeoWPSchema->sanitizeOutPut($metaData['description']);
+                            $video["description"] = $KcSeoWPSchema->sanitizeOutPut($metaData['description'], 'textarea');
                         }
                         if (!empty($metaData['thumbnailUrl'])) {
                             $video["thumbnailUrl"] = $KcSeoWPSchema->sanitizeOutPut($metaData['thumbnailUrl'], 'url');
@@ -397,6 +393,9 @@ if (!class_exists('KcSeoSchemaModel')):
                         }
                         if (!empty($metaData['contentUrl'])) {
                             $video["contentUrl"] = $KcSeoWPSchema->sanitizeOutPut($metaData['contentUrl'], 'url');
+                        }
+                        if (!empty($metaData['embedUrl'])) {
+                            $video["embedUrl"] = $KcSeoWPSchema->sanitizeOutPut($metaData['embedUrl'], 'url');
                         }
                         if (!empty($metaData['interactionCount'])) {
                             $video["interactionCount"] = $KcSeoWPSchema->sanitizeOutPut($metaData['interactionCount']);

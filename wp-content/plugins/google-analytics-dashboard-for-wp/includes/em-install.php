@@ -69,6 +69,18 @@ class ExactMetrics_Install {
 
 		} else { // if existing install
 
+			if ( version_compare( $version, '6.1.0', '<' ) ) {
+				$this->v610_upgrades();
+			}
+
+			if ( version_compare( $version, '6.1.1', '<' ) ) {
+				$this->v611_upgrades();
+			}
+
+			if ( version_compare( $version, '6.2.0', '<' ) ) {
+				$this->v620_upgrades();
+			}
+
 			// Do not use. See exactmetrics_after_install_routine comment below.
 			do_action( 'exactmetrics_after_existing_upgrade_routine', $version );
 			$version = get_option( 'exactmetrics_current_version', $version );
@@ -399,6 +411,13 @@ class ExactMetrics_Install {
 	}
 
 	public function get_exactmetrics_default_values() {
+		$admin_email                                     = get_option( 'admin_email' );
+		$admin_email_array                               = array(
+			array(
+				'email' => $admin_email,
+			),
+		);
+
 		return array(
 			'enable_affiliate_links'    => true,
 			'affiliate_links'           => array(
@@ -426,6 +445,10 @@ class ExactMetrics_Install {
 			'view_reports'              => array( 'administrator', 'editor' ),
 			'events_mode'               => 'js',
 			'tracking_mode'             => 'analytics',
+			'email_summaries'           => 'on',
+			'summaries_html_template'   => 'yes',
+			'summaries_email_addresses' => $admin_email_array,
+			'automatic_updates'         => 'none',
 		);
 	}
 
@@ -464,6 +487,58 @@ class ExactMetrics_Install {
 					'label' => 'affiliate',
 				);
 			}
+		}
+	}
+
+	/**
+	 * Upgrade routine for version 6.1.0
+	 */
+	public function v610_upgrades() {
+
+		if ( empty( $this->new_settings['email_summaries'] ) ) {
+			$admin_email                                     = get_option( 'admin_email' );
+			$admin_email_array                               = array(
+				array(
+					'email' => $admin_email,
+				),
+			);
+			$this->new_settings['email_summaries']           = 'on';
+			$this->new_settings['summaries_html_template']   = 'yes';
+			$this->new_settings['summaries_email_addresses'] = $admin_email_array; // Not using wp_json_encode for backwards compatibility.
+		}
+
+	}
+
+	/**
+	 * Upgrade routine for version 6.1.1
+	 */
+	public function v611_upgrades() {
+		if ( wp_next_scheduled( 'exactmetrics_email_summaries_cron' ) ) {
+			// Clear existing schedule.
+			wp_clear_scheduled_hook( 'exactmetrics_email_summaries_cron' );
+
+			// Schedule again.
+			$schedule           = array();
+			$schedule['day']    = rand( 0, 1 );
+			$schedule['hour']   = rand( 0, 23 );
+			$schedule['minute'] = rand( 0, 59 );
+			$schedule['second'] = rand( 0, 59 );
+			$schedule['offset'] = ( $schedule['day'] * DAY_IN_SECONDS ) +
+			                      ( $schedule['hour'] * HOUR_IN_SECONDS ) +
+			                      ( $schedule['minute'] * MINUTE_IN_SECONDS ) +
+			                      $schedule['second'];
+			$next_run           = strtotime( 'next saturday' ) + $schedule['offset'];
+			wp_schedule_event( $next_run, 'weekly', 'exactmetrics_email_summaries_cron' );
+		}
+	}
+
+	/**
+	 * Upgrade routine for version 6.2.0
+	 */
+	public function v620_upgrades() {
+		// Make sure the default for automatic updates is reflected correctly in the settings.
+		if ( empty( $this->new_settings['automatic_updates'] ) ) {
+			$this->new_settings['automatic_updates'] = 'none';
 		}
 	}
 }

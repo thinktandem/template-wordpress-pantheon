@@ -1,0 +1,4 @@
+name: 'yes'
+recipe: wordpress
+config:
+  webroot: .
