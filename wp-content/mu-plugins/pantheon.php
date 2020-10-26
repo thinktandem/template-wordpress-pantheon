@@ -13,5 +13,7 @@ if ( isset( $_ENV['PANTHEON_ENVIRONMENT'] ) ) :
 require_once( 'pantheon/pantheon-page-cache.php' );
 require_once( 'pantheon/pantheon-updates.php' );
 require_once( 'pantheon/pantheon-login-form-mods.php' );
+require_once( 'pantheon-advanced-page-cache/pantheon-advanced-page-cache.php' );
+require_once( 'wp-native-php-sessions/pantheon-sessions.php' );
 
 endif; # Ensuring that this is on Pantheon
