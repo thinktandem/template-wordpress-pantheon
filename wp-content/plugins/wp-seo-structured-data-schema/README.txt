@@ -4,7 +4,7 @@ Donate link:
 Tags: seo, schema, structured data, rich snippets, microdata, json-ld, search engine optimization, local seo, google, sitelinks, schema.org, microformat, serp
 Requires at least: 4.5
 Tested up to: 5.5
-Stable tag: 2.6.14
+Stable tag: 2.6.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -113,6 +113,9 @@ You'll find the [FAQ on WPSEMPlugins.com](https://wpsemplugins.com/wordpress-seo
 
 
 == Changelog ==
+
+== 2.6.15 =
+* PHP Bug Fix
 
 == 2.6.14 =
 * Fix video embed URL issue
